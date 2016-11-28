@@ -7,7 +7,7 @@ public class textonobject : MonoBehaviour {
 	void Start () {
 	
 	}
-    Transform toFollow;
+    public Transform toFollow;
      
     void  Update()
     {

@@ -21,7 +21,7 @@ public class touchFB : MonoBehaviour {
         ascomp = gameObject.GetComponent<AudioSource>();
 
     }
-	
+    
 	// Update is called once per frame
 	void LateUpdate () {
         if (mylefthand != null)
@@ -51,8 +51,25 @@ public class touchFB : MonoBehaviour {
    
      void OnTriggerEnter(Collider other)
      {
-        // gameObject.SetActive(false);
+        // gameObject.SetActive(false)
+        //
+        Debug.Log(other.gameObject.name);
+        if(other.gameObject.name == "Cube")
+        {
+            other.gameObject.SetActive(false);
+            return;
+        }
+        if (other == null 
+            || other.transform.parent == null 
+            || other.transform.parent.transform.parent == null 
+            || other.transform.parent.transform.parent.transform.parent == null)
+        {
+            return;
+        }
+       
+        Debug.Log(other.transform.parent.transform.parent.transform.parent.transform.tag);
         string touchedhand=other.transform.parent.transform.parent.transform.parent.transform.tag;
+        if (touchedhand == "Untagged") return;
         if (touchedhand == "lefthand")
         {
             if (!lefttouch)
@@ -77,15 +94,25 @@ public class touchFB : MonoBehaviour {
             norighttouches++;
 
         }
-
+        
 
     }
     void OnTriggerExit(Collider other)
     {
+        if (other == null 
+            || other.transform.parent == null 
+            || other.transform.parent.transform.parent == null 
+            || other.transform.parent.transform.parent.transform.parent == null) 
+        {
+            return;
+        }
         string touchedhand = other.transform.parent.transform.parent.transform.parent.transform.tag;
         if (touchedhand == "lefthand")
         {
-            nolefttouches--;
+            if (nolefttouches > 0) {
+                nolefttouches--;
+            }
+          
 
             if (nolefttouches == 0)
             {
@@ -98,7 +125,10 @@ public class touchFB : MonoBehaviour {
         }
         if (touchedhand == "righthand")
         {
-            norighttouches--;
+            if (norighttouches > 0)
+            {
+                norighttouches--;
+            }
 
             if (norighttouches ==0)
             {

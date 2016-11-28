@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\DestroyCube.cs" />
     <Compile Include="Assets\LeapMotion\Scripts\DetectionUtilities\Detector.cs" />
     <Compile Include="Assets\LeapMotion\Scripts\DetectionUtilities\DetectorLogicGate.cs" />
     <Compile Include="Assets\LeapMotion\Scripts\DetectionUtilities\ExtendedFingerDetector.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Assets\OculusPlatform\Scripts\StandalonePlatform.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\StandalonePlatformSettings.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\WindowsPlatform.cs" />
+    <Compile Include="Assets\OnCollision.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeapMotion\Dependencies.txt" />

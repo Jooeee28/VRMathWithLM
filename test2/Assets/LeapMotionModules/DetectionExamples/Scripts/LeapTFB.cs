@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace Leap.Unity
 {
 
@@ -171,6 +173,10 @@ namespace Leap.Unity
                 GUILayout.Label("Two Handed Settings");
                 doRotationMethodGUI(ref _twoHandedRotationMethod);
                 _allowScale = GUILayout.Toggle(_allowScale, "Allow Two Handed Scale");
+                if(GUILayout.Button("reset the scene"))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
             }
         }
 
