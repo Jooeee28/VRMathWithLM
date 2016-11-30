@@ -60,7 +60,7 @@ public class touchFB : MonoBehaviour {
             Vector3 tempPos = other.gameObject.transform.position;
             Vector3 tempScale = other.gameObject.transform.localScale;
             Quaternion tempRot = other.gameObject.transform.rotation;
-            cube = Instantiate(other.gameObject);
+            
             other.gameObject.SetActive(false);
             //Component tempCol = other.gameObject.GetComponent<BoxCollider>();
             
@@ -69,12 +69,17 @@ public class touchFB : MonoBehaviour {
                 
                 Debug.Log("create cube");
                 // cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                
+                cube = Instantiate(other.gameObject);
                 cube.transform.position = tempPos;
                 cube.transform.localScale = tempScale;
                 cube.transform.rotation = tempRot;
-               // Rigidbody tempRig = cube.GetComponent<Rigidbody>();
+                cube.transform.parent = other.gameObject.transform.parent;
+                cube.GetComponent<BoxCollider>().isTrigger = true;
+                cube.GetComponent<Rigidbody>().isKinematic = true;
+                // Rigidbody tempRig = cube.GetComponent<Rigidbody>();
+                cube.name = "Cube";
                 cube.SetActive(true);
+               
                 //cube.transform.rotation = tempRot;
                 createTag = true;
             }
