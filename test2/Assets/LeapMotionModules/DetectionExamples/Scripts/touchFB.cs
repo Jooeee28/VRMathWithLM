@@ -11,7 +11,8 @@ public class touchFB : MonoBehaviour {
     public GameObject myrighthand;
     private bool lefthandvisible;
     private bool righthandvisible;
-
+    private GameObject cube;
+    public static bool createTag = false;
     // Use this for initialization
     void Start () {
         lefttouch = false;
@@ -56,7 +57,28 @@ public class touchFB : MonoBehaviour {
         Debug.Log(other.gameObject.name);
         if(other.gameObject.name == "Cube")
         {
+            Vector3 tempPos = other.gameObject.transform.position;
+            Vector3 tempScale = other.gameObject.transform.localScale;
+            Quaternion tempRot = other.gameObject.transform.rotation;
+            cube = Instantiate(other.gameObject);
             other.gameObject.SetActive(false);
+            //Component tempCol = other.gameObject.GetComponent<BoxCollider>();
+            
+            if (!createTag)//check if there is already one
+            {
+                
+                Debug.Log("create cube");
+                // cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                
+                cube.transform.position = tempPos;
+                cube.transform.localScale = tempScale;
+                cube.transform.rotation = tempRot;
+               // Rigidbody tempRig = cube.GetComponent<Rigidbody>();
+                cube.SetActive(true);
+                //cube.transform.rotation = tempRot;
+                createTag = true;
+            }
+           
             return;
         }
         if (other == null 
