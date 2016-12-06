@@ -175,7 +175,9 @@ namespace Leap.Unity
                 _allowScale = GUILayout.Toggle(_allowScale, "Allow Two Handed Scale");
                 if(GUILayout.Button("reset the scene"))
                 {
+                    touchFB.createTag = false;//set static to default
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    
                 }
             }
         }

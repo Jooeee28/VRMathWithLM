@@ -74,6 +74,10 @@ public class touchFB : MonoBehaviour {
                 cube.transform.localScale = tempScale;
                 cube.transform.rotation = tempRot;
                 cube.transform.parent = other.gameObject.transform.parent;
+                cube.GetComponent<touchFB>().lefttouch = true;
+                cube.GetComponent<touchFB>().righttouch = true;
+                cube.GetComponent<touchFB>().nolefttouches = 0;
+                cube.GetComponent<touchFB>().norighttouches = 0;
                 cube.GetComponent<BoxCollider>().isTrigger = true;
                 cube.GetComponent<Rigidbody>().isKinematic = true;
                 // Rigidbody tempRig = cube.GetComponent<Rigidbody>();
