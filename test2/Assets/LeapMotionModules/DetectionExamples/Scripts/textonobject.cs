@@ -11,7 +11,14 @@ public class textonobject : MonoBehaviour {
      
     void  Update()
     {
-        transform.position = Camera.main.WorldToViewportPoint(toFollow.position);
+        /* //transform.position = toFollow.position;
+       Vector3 tempPosition = toFollow.position;
+       float tx = tempPosition.x;
+       float ty = tempPosition.y;
+       float tz = tempPosition.z;
+       Vector3 newPosition = new Vector3(tx, ty, tz);
+       transform.position = newPosition;
+       */
     }
 
 }
