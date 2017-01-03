@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Leap.Unity;
 
 public class touchFB : MonoBehaviour {
     private AudioSource ascomp;
@@ -74,6 +75,15 @@ public class touchFB : MonoBehaviour {
                 cube.transform.localScale = tempScale;
                 cube.transform.rotation = tempRot;
                 cube.transform.parent = other.gameObject.transform.parent;
+                Debug.Log("parent:");
+                Debug.Log(other.gameObject.transform.parent.tag);
+
+
+                other.gameObject.transform.parent.GetComponent<LeapTFB>().fbleftdebug = true;
+                other.gameObject.transform.parent.GetComponent<LeapTFB>().fbrightdebug = true;
+
+                other.gameObject.transform.parent.GetComponent<LeapTFB>().refresh();
+
                 cube.GetComponent<touchFB>().lefttouch = true;
                 cube.GetComponent<touchFB>().righttouch = true;
                 cube.GetComponent<touchFB>().nolefttouches = 0;

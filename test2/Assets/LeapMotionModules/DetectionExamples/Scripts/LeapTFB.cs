@@ -84,6 +84,12 @@ namespace Leap.Unity
            // numbertouchsphere = GameObject.Find("touchsphere");
         }
 
+        public void refresh()
+        {
+            Lefttouchingobject = false;
+            Righttouchingobject = false;
+        }
+
         void Update()
         {
             bool myflag = false;
