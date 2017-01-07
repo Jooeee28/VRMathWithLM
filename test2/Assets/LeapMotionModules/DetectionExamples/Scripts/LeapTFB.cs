@@ -64,7 +64,7 @@ namespace Leap.Unity
         private Transform _anchor;
 
         private float _defaultNearClip;
-        private AudioSource ascomp;
+        private AudioSource[] sounds;
         bool Lefttouchingobject;
         bool Righttouchingobject;
         public GameObject numbertouchsphere;
@@ -74,7 +74,7 @@ namespace Leap.Unity
             //        Debug.LogWarning("Both Pinch Detectors of the LeapRTS component must be assigned. This component has been disabled.");
             //        enabled = false;
             //      }
-            ascomp = gameObject.GetComponent<AudioSource>();
+            sounds = gameObject.GetComponents<AudioSource>();
             Lefttouchingobject = false;
             Righttouchingobject = false;
             GameObject pinchControl = new GameObject("RTS Anchor");
@@ -127,7 +127,7 @@ namespace Leap.Unity
                     // transformSingleAnchor(_pinchDetectorA);
                     _anchor.position = _pinchDetectorA.Position;
                     if (!Lefttouchingobject) {
-                        ascomp.Play();
+                    sounds[0].Play();
                         Lefttouchingobject = true;
                       
                         myflag = true;
@@ -144,7 +144,7 @@ namespace Leap.Unity
                         _anchor.position = _pinchDetectorB.Position;
                         if (!Righttouchingobject)
                         {
-                            ascomp.Play();
+                            sounds[0].Play();
                             Righttouchingobject = true;
                           
                             myflag = true;  

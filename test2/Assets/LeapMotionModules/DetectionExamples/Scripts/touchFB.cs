@@ -14,13 +14,20 @@ public class touchFB : MonoBehaviour {
     private bool righthandvisible;
     private GameObject cube;
     public static bool createTag = false;
+
+    private GameObject cube1;
+    private GameObject cube2;
+    public static string num1;
+    public static string num2;
+
+    private AudioSource[] sounds;
     // Use this for initialization
     void Start () {
         lefttouch = false;
         righttouch = false;
         nolefttouches = 0;
         norighttouches = 0;
-        ascomp = gameObject.GetComponent<AudioSource>();
+        sounds = gameObject.GetComponents<AudioSource>();
 
     }
     
@@ -62,12 +69,40 @@ public class touchFB : MonoBehaviour {
             Vector3 tempScale = other.gameObject.transform.localScale;
             Quaternion tempRot = other.gameObject.transform.rotation;
             
-            other.gameObject.SetActive(false);
-            //Component tempCol = other.gameObject.GetComponent<BoxCollider>();
             
+            //Component tempCol = other.gameObject.GetComponent<BoxCollider>();
+            /*
+            if(other.gameObject.tag == "cube1")
+            {
+                cube1 = other.gameObject;
+                Transform textonobj = cube1.transform.GetChild(0);
+                TextMesh tm = textonobj.GetComponent<TextMesh>();
+                num1 = tm.text;
+            }
+
+            if(other.gameObject.tag == "cube2")
+            {
+                cube2 = other.gameObject;
+                Transform textonobj = cube2.transform.GetChild(0);
+                TextMesh tm = textonobj.GetComponent<TextMesh>();
+                num2 = tm.text;
+            }
+            */
+
+            other.gameObject.SetActive(false);
+
             if (!createTag)//check if there is already one
             {
-                
+                // add the amount together
+                GameObject thisCube = gameObject;
+                num1 = thisCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+                num2 = other.gameObject.transform.GetChild(0).GetComponent<TextMesh>().text;
+                int result=0;
+                if (num1 != null && num2 != null)
+                {
+                    result = int.Parse(num2) + int.Parse(num1);
+                }
+
                 Debug.Log("create cube");
                 // cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 cube = Instantiate(other.gameObject);
@@ -77,7 +112,7 @@ public class touchFB : MonoBehaviour {
                 cube.transform.parent = other.gameObject.transform.parent;
                 Debug.Log("parent:");
                 Debug.Log(other.gameObject.transform.parent.tag);
-
+                cube.transform.GetChild(0).GetComponent<TextMesh>().text = " " + result;
 
                 other.gameObject.transform.parent.GetComponent<LeapTFB>().fbleftdebug = true;
                 other.gameObject.transform.parent.GetComponent<LeapTFB>().fbrightdebug = true;
@@ -90,10 +125,13 @@ public class touchFB : MonoBehaviour {
                 cube.GetComponent<touchFB>().norighttouches = 0;
                 cube.GetComponent<BoxCollider>().isTrigger = true;
                 cube.GetComponent<Rigidbody>().isKinematic = true;
+                AudioSource ye = cube.GetComponent<AudioSource>();
+                ye.playOnAwake = true;
+                ye.Play();
                 // Rigidbody tempRig = cube.GetComponent<Rigidbody>();
                 cube.name = "Cube";
                 cube.SetActive(true);
-               
+
                 //cube.transform.rotation = tempRot;
                 createTag = true;
             }
