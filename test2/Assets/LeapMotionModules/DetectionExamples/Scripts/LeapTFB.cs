@@ -167,8 +167,22 @@ namespace Leap.Unity
 
                 if (Righttouchingobject || Lefttouchingobject)
                 {
-                    numbertouchsphere.SetActive(true);
-                }else { numbertouchsphere.SetActive(false); }
+                // first judge if it is coloned cube
+                //numbertouchsphere.SetActive(true);
+                    if (transform.childCount == 2){
+                        transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+                    } else {
+                        numbertouchsphere.SetActive(true);
+                    }
+                } else {
+                    if (transform.childCount == 2){
+                        transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+                    }else{
+                        numbertouchsphere.SetActive(false);
+                    }
+                //numbertouchsphere.SetActive(false); 
+
+                }
 
 
                 if (didUpdate)

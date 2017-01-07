@@ -114,6 +114,8 @@ public class touchFB : MonoBehaviour {
                 Debug.Log(other.gameObject.transform.parent.tag);
                 cube.transform.GetChild(0).GetComponent<TextMesh>().text = " " + result;
 
+                cube.transform.GetChild(1).gameObject.SetActive(false);
+
                 cube.GetComponent<touchFB>().lefttouch = false;
                 cube.GetComponent<touchFB>().righttouch = false;
 
