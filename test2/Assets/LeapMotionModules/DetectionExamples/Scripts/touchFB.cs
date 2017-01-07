@@ -114,18 +114,22 @@ public class touchFB : MonoBehaviour {
                 Debug.Log(other.gameObject.transform.parent.tag);
                 cube.transform.GetChild(0).GetComponent<TextMesh>().text = " " + result;
 
-                other.gameObject.transform.parent.GetComponent<LeapTFB>().fbleftdebug = true;
-                other.gameObject.transform.parent.GetComponent<LeapTFB>().fbrightdebug = true;
+                cube.GetComponent<touchFB>().lefttouch = false;
+                cube.GetComponent<touchFB>().righttouch = false;
 
-                other.gameObject.transform.parent.GetComponent<LeapTFB>().refresh();
 
-                cube.GetComponent<touchFB>().lefttouch = true;
-                cube.GetComponent<touchFB>().righttouch = true;
+                cube.transform.parent.GetComponent<LeapTFB>().fbleftdebug = false;
+                cube.transform.parent.GetComponent<LeapTFB>().fbrightdebug = false;
+
+                cube.transform.parent.GetComponent<LeapTFB>().refresh();
+
+                
                 cube.GetComponent<touchFB>().nolefttouches = 0;
                 cube.GetComponent<touchFB>().norighttouches = 0;
                 cube.GetComponent<BoxCollider>().isTrigger = true;
                 cube.GetComponent<Rigidbody>().isKinematic = true;
-                AudioSource ye = cube.GetComponent<AudioSource>();
+                cube.GetComponent<Renderer>().material.color = Color.yellow;
+                AudioSource ye = cube.GetComponent<AudioSource>();// the sound of addition
                 ye.playOnAwake = true;
                 ye.Play();
                 // Rigidbody tempRig = cube.GetComponent<Rigidbody>();

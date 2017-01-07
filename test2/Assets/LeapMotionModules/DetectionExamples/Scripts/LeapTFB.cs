@@ -93,8 +93,16 @@ namespace Leap.Unity
         void Update()
         {
             bool myflag = false;
-            fbleftdebug = transform.GetChild(0).GetComponent<touchFB>().lefttouch;
-            fbrightdebug = transform.GetChild(0).GetComponent<touchFB>().righttouch;
+            if(transform.childCount == 2)
+            {
+                fbleftdebug = transform.GetChild(1).GetComponent<touchFB>().lefttouch;
+                fbrightdebug = transform.GetChild(1).GetComponent<touchFB>().righttouch;
+            }else
+            {
+                fbleftdebug = transform.GetChild(0).GetComponent<touchFB>().lefttouch;
+                fbrightdebug = transform.GetChild(0).GetComponent<touchFB>().righttouch;
+            }
+            
 
 
                 if (Input.GetKeyDown(_toggleGuiState))
