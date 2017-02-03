@@ -21,6 +21,13 @@ public class touchFB : MonoBehaviour {
     public static string num2;
 
     private AudioSource[] sounds;
+
+    public float jumpSpeed = 250f;
+
+    public bool insideWall = true;
+
+    Rigidbody _cube;
+
     // Use this for initialization
     void Start () {
         lefttouch = false;
@@ -55,6 +62,22 @@ public class touchFB : MonoBehaviour {
 
         }
 
+        if(insideWall == false && _cube!=null)
+        {
+            _cube.velocity = Vector3.zero;
+        }
+
+        //Debug.Log("position:");
+        //Debug.Log(transform.position);
+        if(transform.position.z >= 0.4)
+        {
+            insideWall = true;
+        }
+
+        if(transform.position.z <= 0.3)
+        {
+            transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
 
     }
    
@@ -165,7 +188,26 @@ public class touchFB : MonoBehaviour {
   
             }
             nolefttouches++;
-            
+           // Debug.Log("first layer:");
+           // Debug.Log(other.transform.name);
+
+           // Debug.Log("2nd layer:");
+           // Debug.Log(other.transform.parent.transform.name);
+
+            if(insideWall && other.transform.parent.transform.name == "index")
+            {
+                insideWall = false;
+
+                string _name = transform.name;
+
+                _cube = transform.GetComponent<Rigidbody>();
+
+               
+                jumpForward(_cube);
+                
+            }
+
+
         }
         if (touchedhand == "righthand")
         {
@@ -177,6 +219,17 @@ public class touchFB : MonoBehaviour {
 
             }
             norighttouches++;
+
+            if (insideWall && other.transform.parent.transform.name == "index")
+            {
+                insideWall = false;
+
+                string _name = transform.name;
+
+                _cube = transform.GetComponent<Rigidbody>();
+                jumpForward(_cube);
+
+            }
 
         }
         
@@ -224,7 +277,12 @@ public class touchFB : MonoBehaviour {
             }
 
         }
+        
 
     }
 
+    void jumpForward(Rigidbody _cube) 
+    {
+        _cube.AddRelativeForce(Vector3.forward*-2f,ForceMode.Impulse);
+    }
 }
