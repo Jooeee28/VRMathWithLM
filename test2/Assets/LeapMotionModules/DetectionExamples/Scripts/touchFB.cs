@@ -26,6 +26,8 @@ public class touchFB : MonoBehaviour {
 
     public bool insideWall = true;
 
+    public bool large = false;
+
     Rigidbody _cube;
 
     // Use this for initialization

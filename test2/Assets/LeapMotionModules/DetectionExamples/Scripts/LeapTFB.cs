@@ -68,6 +68,14 @@ namespace Leap.Unity
         bool Lefttouchingobject;
         bool Righttouchingobject;
         public GameObject numbertouchsphere;
+        
+        public int pinchCountL;
+        private float timeGapL;
+
+        public int pinchCountR;
+        private float timeGapR;
+
+
         void Start()
         {
             //      if (_pinchDetectorA == null || _pinchDetectorB == null) {
@@ -81,6 +89,7 @@ namespace Leap.Unity
             _anchor = pinchControl.transform;
             _anchor.transform.parent = transform.parent;
             transform.parent = _anchor;
+            pinchCountL = 0;
            // numbertouchsphere = GameObject.Find("touchsphere");
         }
 
@@ -136,12 +145,39 @@ namespace Leap.Unity
                     _anchor.position = _pinchDetectorA.Position;
                     if (!Lefttouchingobject) {
                     sounds[0].Play();
-                        Lefttouchingobject = true;
-                      
-                        myflag = true;
+
+                    //double click detect
+                    if(pinchCountL == 1)// avoid redundant
+                    {
+                        if (Time.time - timeGapL > 1)// not validate click
+                        {
+                            pinchCountL = 0;
+                        }
+
+                    }
+                    if (pinchCountL == 0)
+                    {
+                        timeGapL = Time.time;
+                    }
+                    if(pinchCountL == 1)
+                    {
+                        timeGapL = Time.time - timeGapL;
+                        if (timeGapL <= 1)
+                        {
+                            Debug.Log("Left double click success!");
+                            enlargeCube();
+                        }
+                    }
+                    pinchCountL++;
+                    if (pinchCountL == 2)
+                    {
+                        pinchCountL = 0;
+                    }
+                    Lefttouchingobject = true;
+                    myflag = true;
                     }
 
-                 }
+            }
                 else {
                     Lefttouchingobject = false;
                   
@@ -153,7 +189,36 @@ namespace Leap.Unity
                         if (!Righttouchingobject)
                         {
                             sounds[0].Play();
-                            Righttouchingobject = true;
+
+
+                    //double click detect Right
+                    if (pinchCountR == 1)// avoid redundant
+                    {
+                        if (Time.time - timeGapR > 1)// not validate click
+                        {
+                            pinchCountR = 0;
+                        }
+
+                    }
+                    if (pinchCountR == 0)
+                    {
+                        timeGapR = Time.time;
+                    }
+                    if (pinchCountR == 1)
+                    {
+                        timeGapR = Time.time - timeGapR;
+                        if (timeGapR <= 1)
+                        {
+                            Debug.Log("Right double click success!");
+                            enlargeCube();
+                        }
+                    }
+                    pinchCountR++;
+                    if (pinchCountR == 2)
+                    {
+                        pinchCountR = 0;
+                    }
+                    Righttouchingobject = true;
                           
                             myflag = true;  
                         }
@@ -282,6 +347,16 @@ namespace Leap.Unity
             }
 
             _anchor.localScale = Vector3.one;
+        }
+
+        private void enlargeCube()
+        {
+            Vector3 size = transform.GetChild(0).transform.localScale;
+            if (!transform.GetChild(0).GetComponent<touchFB>().large)
+            {
+                transform.GetChild(0).transform.localScale = new Vector3(size.x * 2, size.y * 2, size.z * 2);
+                transform.GetChild(0).GetComponent<touchFB>().large = true;
+            }
         }
     }
 
