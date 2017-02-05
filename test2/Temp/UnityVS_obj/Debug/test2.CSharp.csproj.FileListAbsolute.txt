@@ -1,0 +1,17 @@
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\LeapCSharp.NET3.5.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEngine.Networking.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEngine.Networking.xml
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_obj\Debug\test2.CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
+C:\Users\Administrator\Desktop\firsttouch\test2\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb

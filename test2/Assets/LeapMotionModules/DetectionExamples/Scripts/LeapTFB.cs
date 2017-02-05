@@ -146,33 +146,37 @@ namespace Leap.Unity
                     if (!Lefttouchingobject) {
                     sounds[0].Play();
 
-                    //double click detect
-                    if(pinchCountL == 1)// avoid redundant
+                    if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction")
                     {
-                        if (Time.time - timeGapL > 1)// not validate click
+                        //double click detect
+                        if (pinchCountL == 1)// avoid redundant
+                        {
+                            if (Time.time - timeGapL > 1)// not validate click
+                            {
+                                pinchCountL = 0;
+                            }
+
+                        }
+                        if (pinchCountL == 0)
+                        {
+                            timeGapL = Time.time;
+                        }
+                        if (pinchCountL == 1)
+                        {
+                            timeGapL = Time.time - timeGapL;
+                            if (timeGapL <= 1)
+                            {
+                                Debug.Log("Left double click success!");
+                                enlargeCube();
+                            }
+                        }
+                        pinchCountL++;
+                        if (pinchCountL == 2)
                         {
                             pinchCountL = 0;
                         }
-
                     }
-                    if (pinchCountL == 0)
-                    {
-                        timeGapL = Time.time;
-                    }
-                    if(pinchCountL == 1)
-                    {
-                        timeGapL = Time.time - timeGapL;
-                        if (timeGapL <= 1)
-                        {
-                            Debug.Log("Left double click success!");
-                            enlargeCube();
-                        }
-                    }
-                    pinchCountL++;
-                    if (pinchCountL == 2)
-                    {
-                        pinchCountL = 0;
-                    }
+                    
                     Lefttouchingobject = true;
                     myflag = true;
                     }
@@ -190,34 +194,38 @@ namespace Leap.Unity
                         {
                             sounds[0].Play();
 
-
-                    //double click detect Right
-                    if (pinchCountR == 1)// avoid redundant
+                    if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction")
                     {
-                        if (Time.time - timeGapR > 1)// not validate click
+                        //double click detect Right
+                        if (pinchCountR == 1)// avoid redundant
+                        {
+                            if (Time.time - timeGapR > 1)// not validate click
+                            {
+                                pinchCountR = 0;
+                            }
+
+                        }
+                        if (pinchCountR == 0)
+                        {
+                            timeGapR = Time.time;
+                        }
+                        if (pinchCountR == 1)
+                        {
+                            timeGapR = Time.time - timeGapR;
+                            if (timeGapR <= 1)
+                            {
+                                Debug.Log("Right double click success!");
+                                enlargeCube();
+                            }
+                        }
+                        pinchCountR++;
+                        if (pinchCountR == 2)
                         {
                             pinchCountR = 0;
                         }
 
                     }
-                    if (pinchCountR == 0)
-                    {
-                        timeGapR = Time.time;
-                    }
-                    if (pinchCountR == 1)
-                    {
-                        timeGapR = Time.time - timeGapR;
-                        if (timeGapR <= 1)
-                        {
-                            Debug.Log("Right double click success!");
-                            enlargeCube();
-                        }
-                    }
-                    pinchCountR++;
-                    if (pinchCountR == 2)
-                    {
-                        pinchCountR = 0;
-                    }
+                       
                     Righttouchingobject = true;
                           
                             myflag = true;  
