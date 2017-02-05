@@ -75,6 +75,8 @@ namespace Leap.Unity
         public int pinchCountR;
         private float timeGapR;
 
+        public PinchDetector tempPDL;
+        public PinchDetector tempPDR;
 
         void Start()
         {
@@ -365,6 +367,13 @@ namespace Leap.Unity
                 transform.GetChild(0).transform.localScale = new Vector3(size.x * 2, size.y * 2, size.z * 2);
                 transform.GetChild(0).GetComponent<touchFB>().large = true;
             }
+
+            //save pinchDetector -> stop being pinched:
+            tempPDL = _pinchDetectorA;
+            tempPDR = _pinchDetectorB;
+            _pinchDetectorA = null;
+            _pinchDetectorB = null;
+
         }
     }
 
