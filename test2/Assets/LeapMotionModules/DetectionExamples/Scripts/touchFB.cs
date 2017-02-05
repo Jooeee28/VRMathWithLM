@@ -30,6 +30,8 @@ public class touchFB : MonoBehaviour {
 
     Rigidbody _cube;
 
+    private string saveText; 
+
     // Use this for initialization
     void Start () {
         lefttouch = false;
@@ -37,7 +39,12 @@ public class touchFB : MonoBehaviour {
         nolefttouches = 0;
         norighttouches = 0;
         sounds = gameObject.GetComponents<AudioSource>();
+        if (!createTag)
+        {
+            saveText = transform.GetChild(0).GetComponent<TextMesh>().text;
+            transform.GetChild(0).GetComponent<TextMesh>().text = "";
 
+        }
     }
     
 	// Update is called once per frame
@@ -149,8 +156,6 @@ public class touchFB : MonoBehaviour {
                 cube.transform.parent.GetComponent<LeapTFB>().fbrightdebug = false;
 
                 cube.transform.parent.GetComponent<LeapTFB>().refresh();
-
-                
                 cube.GetComponent<touchFB>().nolefttouches = 0;
                 cube.GetComponent<touchFB>().norighttouches = 0;
                 cube.GetComponent<BoxCollider>().isTrigger = true;
@@ -165,6 +170,10 @@ public class touchFB : MonoBehaviour {
 
                 //cube.transform.rotation = tempRot;
                 createTag = true;
+
+                
+                GameObject.Find("add").SetActive(false);
+                GameObject.Find("equition").SetActive(false);
             }
            
             return;
@@ -201,12 +210,27 @@ public class touchFB : MonoBehaviour {
                 insideWall = false;
 
                 string _name = transform.name;
-
                 _cube = transform.GetComponent<Rigidbody>();
 
-               
+                _cube.transform.GetChild(0).GetComponent<TextMesh>().text = saveText;
+
                 jumpForward(_cube);
-                
+                if (_cube.tag == "cube1")
+                {
+                    if (GameObject.Find("firstNum") != null)
+                    {
+                        GameObject.Find("firstNum").SetActive(false);
+                    }
+                }
+                if (_cube.tag == "cube2")
+                {
+                    if (GameObject.Find("secondNum") != null)
+                    {
+                        GameObject.Find("secondNum").SetActive(false);
+                    }
+                }
+
+
             }
 
 
@@ -229,7 +253,23 @@ public class touchFB : MonoBehaviour {
                 string _name = transform.name;
 
                 _cube = transform.GetComponent<Rigidbody>();
+                _cube.transform.GetChild(0).GetComponent<TextMesh>().text = saveText;
                 jumpForward(_cube);
+
+                if (_cube.tag == "cube1")
+                {
+                    if (GameObject.Find("firstNum") != null)
+                    {
+                        GameObject.Find("firstNum").SetActive(false);
+                    }
+                }
+                if (_cube.tag == "cube2")
+                {
+                    if (GameObject.Find("secondNum")!=null)
+                    {
+                        GameObject.Find("secondNum").SetActive(false);
+                    }
+                }
 
             }
 
