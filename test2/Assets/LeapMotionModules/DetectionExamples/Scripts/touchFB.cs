@@ -138,9 +138,10 @@ public class touchFB : MonoBehaviour {
                 cube.GetComponent<BoxCollider>().isTrigger = true;
                 cube.GetComponent<Rigidbody>().isKinematic = true;
                 cube.GetComponent<Renderer>().material.color = Color.yellow;
-                AudioSource ye = cube.GetComponent<AudioSource>();// the sound of addition
-                ye.playOnAwake = true;
-                ye.Play();
+                AudioSource[] ye = cube.GetComponents<AudioSource>();// the sound of addition
+                ye[0].playOnAwake = true;
+                ye[0].Play();
+                //sounds[0].Play();
                 cube.name = "Cube";
                 cube.SetActive(true);
                 createTag = true;
@@ -182,6 +183,9 @@ public class touchFB : MonoBehaviour {
                 _cube.transform.GetChild(0).GetComponent<TextMesh>().text = saveText;
 
                 jumpForward(_cube);
+
+                sounds = _cube.transform.GetComponents<AudioSource>();
+                sounds[1].Play();
                 if (_cube.tag == "cube1")
                 {
                     if (GameObject.Find("firstNum") != null)
@@ -235,6 +239,8 @@ public class touchFB : MonoBehaviour {
                 _cube = transform.GetComponent<Rigidbody>();
                 _cube.transform.GetChild(0).GetComponent<TextMesh>().text = saveText;
                 jumpForward(_cube);
+                sounds = _cube.transform.GetComponents<AudioSource>();
+                sounds[1].Play();
 
                 if (_cube.tag == "cube1")
                 {
