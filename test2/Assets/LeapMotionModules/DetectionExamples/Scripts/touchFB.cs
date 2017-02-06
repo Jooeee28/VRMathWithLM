@@ -30,7 +30,7 @@ public class touchFB : MonoBehaviour {
 
     Rigidbody _cube;
 
-    private string saveText;
+    public string saveText;
 
     private string type;
 
@@ -146,7 +146,7 @@ public class touchFB : MonoBehaviour {
                 cube.SetActive(true);
                 createTag = true;
                 GameObject.Find("add").SetActive(false);
-                GameObject.Find("equition").SetActive(false);
+                GameObject.Find("equation").SetActive(false);
             }
            
             return;
@@ -173,7 +173,9 @@ public class touchFB : MonoBehaviour {
             }
             nolefttouches++;
 
-            if(insideWall && other.transform.parent.transform.name == "index")
+            if(insideWall 
+                && other.transform.parent.transform.name == "index"
+                && transform.tag !="cubesub2")
             {
                 insideWall = false;
 
@@ -230,7 +232,9 @@ public class touchFB : MonoBehaviour {
             }
             norighttouches++;
 
-            if (insideWall && other.transform.parent.transform.name == "index")
+            if (insideWall 
+                && other.transform.parent.transform.name == "index"
+                && transform.tag != "cubesub2")
             {
                 insideWall = false;
 
@@ -320,8 +324,49 @@ public class touchFB : MonoBehaviour {
             }
 
         }
-        
 
+        if (large && other.gameObject.name =="touchsphere")
+        {
+            //do final subtraction activate first cube.
+            GameObject firstSubCube = GameObject.FindGameObjectWithTag("cubesub1");
+            if(firstSubCube == null)
+            {
+                Debug.Log("cannot find cubesub1");
+                return;
+            }
+            string secondSubNumStr = other.transform.parent.GetChild(0).GetComponent<TextMesh>().text;
+            string firstStr = firstSubCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+            int res = 0;
+            if(firstStr !=null && secondSubNumStr != null)
+            {
+                res = int.Parse(firstStr) - int.Parse(secondSubNumStr);
+            }
+
+            firstSubCube.transform.GetChild(0).GetComponent<TextMesh>().text = " "+ res;
+            firstSubCube.transform.parent.GetComponent<LeapTFB>().releaseCube();
+
+
+            other.transform.parent.GetComponent<CubeProperty>().cubeType = "result";
+            firstSubCube.transform.GetComponent<CubeProperty>().cubeType = "result";
+
+            AudioSource[] ye = other.transform.parent.GetComponents<AudioSource>();// the sound of subtraction
+            ye[0].playOnAwake = true;
+            ye[0].Play();
+
+
+            if (GameObject.Find("minus") != null)
+            {
+                GameObject.Find("minus").SetActive(false);
+            }
+
+            if (GameObject.Find("equationSub") != null)
+            {
+                GameObject.Find("equationSub").SetActive(false);
+            }
+
+
+
+        }
     }
 
     void jumpForward(Rigidbody _cube) 

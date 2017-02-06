@@ -148,7 +148,8 @@ namespace Leap.Unity
                     if (!Lefttouchingobject) {
                     sounds[0].Play();
 
-                    if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction")
+                    if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
+                        && transform.GetChild(0).tag=="cubesub1")
                     {
                         //double click detect
                         if (pinchCountL == 1)// avoid redundant
@@ -196,7 +197,8 @@ namespace Leap.Unity
                         {
                             sounds[0].Play();
 
-                    if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction")
+                    if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
+                        && transform.GetChild(0).tag == "cubesub1")
                     {
                         //double click detect Right
                         if (pinchCountR == 1)// avoid redundant
@@ -374,6 +376,19 @@ namespace Leap.Unity
             _pinchDetectorA = null;
             _pinchDetectorB = null;
 
+        }
+
+        public void releaseCube()
+        {
+            Vector3 size = transform.GetChild(0).transform.localScale;
+            if (transform.GetChild(0).GetComponent<touchFB>().large)
+            {
+                transform.GetChild(0).transform.localScale = new Vector3(size.x /2, size.y / 2, size.z / 2);
+                transform.GetChild(0).GetComponent<touchFB>().large = false;
+            }
+
+            _pinchDetectorA = tempPDL;
+            _pinchDetectorB = tempPDR;
         }
     }
 
