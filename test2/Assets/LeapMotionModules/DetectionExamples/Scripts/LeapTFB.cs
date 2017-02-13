@@ -148,9 +148,9 @@ namespace Leap.Unity
                     if (!Lefttouchingobject) {
                     sounds[0].Play();
 
-                    if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
-                        && transform.GetChild(0).tag=="cubesub1")
-                    {
+                    //if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
+                        //&& transform.GetChild(0).tag=="cubesub1")
+                   // {
                         //double click detect
                         if (pinchCountL == 1)// avoid redundant
                         {
@@ -178,7 +178,7 @@ namespace Leap.Unity
                         {
                             pinchCountL = 0;
                         }
-                    }
+                    //}
                     
                     Lefttouchingobject = true;
                     myflag = true;
@@ -197,9 +197,9 @@ namespace Leap.Unity
                         {
                             sounds[0].Play();
 
-                    if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
-                        && transform.GetChild(0).tag == "cubesub1")
-                    {
+                   // if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
+                     //   && transform.GetChild(0).tag == "cubesub1")
+                    //{
                         //double click detect Right
                         if (pinchCountR == 1)// avoid redundant
                         {
@@ -228,7 +228,7 @@ namespace Leap.Unity
                             pinchCountR = 0;
                         }
 
-                    }
+                   // }
                        
                     Righttouchingobject = true;
                           

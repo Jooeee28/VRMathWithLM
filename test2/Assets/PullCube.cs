@@ -74,8 +74,25 @@ public class PullCube : MonoBehaviour {
 
     void createCube(Vector3 pos)
     {
-        GameObject _cube;
-        _cube = GameObject.FindGameObjectWithTag("cubesub2");
+        GameObject _cube = null;
+        if(transform.tag == "cube1")
+        {
+            _cube = GameObject.FindGameObjectWithTag("cube2");
+
+            if (GameObject.Find("secondNum") != null)
+            {
+                GameObject.Find("secondNum").SetActive(false);
+            }
+
+        }
+        else if(transform.tag == "cube2"){
+            _cube = GameObject.FindGameObjectWithTag("cube1");
+            if (GameObject.Find("firstNum") != null)
+            {
+                GameObject.Find("firstNum").SetActive(false);
+            }
+        }
+        
         if(_cube == null)
         {
             Debug.Log("cannot find cubesub2");
@@ -86,6 +103,9 @@ public class PullCube : MonoBehaviour {
         {
             GameObject.Find("secondSubNum").SetActive(false);
         }
+
+        
+
         _cube.transform.GetComponent<touchFB>().insideWall = false;
         _cube.transform.GetChild(0).GetComponent<TextMesh>().text = _cube.transform.GetComponent<touchFB>().saveText;
         _cube.transform.position = pos;

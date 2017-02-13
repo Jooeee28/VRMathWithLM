@@ -99,9 +99,16 @@ public class touchFB : MonoBehaviour {
         //
         Debug.Log(other.gameObject.name);
         //&& other.gameObject.transform.GetComponent<CubeProperty>().cubeType == "addition"
-        if (other.gameObject.name == "Cube" && other.gameObject.transform.GetComponent<CubeProperty>().cubeType == "addition"
-            && transform.GetComponent<CubeProperty>().cubeType == "addition")
+        if (other.gameObject.name == "Cube" && !other.transform.GetComponent<touchFB>().large
+            && !transform.GetComponent<touchFB>().large)//&& other.gameObject.transform.GetComponent<CubeProperty>().cubeType == "addition"
+            //&& transform.GetComponent<CubeProperty>().cubeType == "addition")
         {
+            if(other.transform.GetComponent<CubeProperty>().cubeType != "addition" || transform.GetComponent<CubeProperty>().cubeType != "addition")
+            {
+                Debug.Log("wrong action -> fail");
+                //play fail sound;
+                return;
+            }
             Vector3 tempPos = other.gameObject.transform.position;
             Vector3 tempScale = other.gameObject.transform.localScale;
             Quaternion tempRot = other.gameObject.transform.rotation;
@@ -335,26 +342,46 @@ public class touchFB : MonoBehaviour {
         if (large && other.gameObject.name =="touchsphere")
         {
             //do final subtraction activate first cube.
-            GameObject firstSubCube = GameObject.FindGameObjectWithTag("cubesub1");
-            if(firstSubCube == null)
+            // GameObject firstSubCube = GameObject.FindGameObjectWithTag("cubesub1");
+            if(transform.GetComponent<CubeProperty>().cubeType != "subtraction")
+            {
+                Debug.Log("wrong action!->fail!!!");
+                return;
+            }
+            GameObject _cube = null;
+            if (transform.tag == "cube1")
+            {
+                _cube = GameObject.FindGameObjectWithTag("cube2");
+            }
+            else if (transform.tag == "cube2")
+            {
+                _cube = GameObject.FindGameObjectWithTag("cube1");
+            }
+
+            if(_cube.transform.GetComponent<CubeProperty>().cubeType != "subtraction")
+            {
+                Debug.Log("wrong action!->fail!!!");
+                return;
+            }
+            if (_cube == null)
             {
                 Debug.Log("cannot find cubesub1");
                 return;
             }
-            string secondSubNumStr = other.transform.parent.GetChild(0).GetComponent<TextMesh>().text;
-            string firstStr = firstSubCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+            string  firstStr  = transform.GetChild(0).GetComponent<TextMesh>().text;
+            string  secondSubNumStr = _cube.transform.GetChild(0).GetComponent<TextMesh>().text;
             int res = 0;
             if(firstStr !=null && secondSubNumStr != null)
             {
                 res = int.Parse(firstStr) - int.Parse(secondSubNumStr);
             }
 
-            firstSubCube.transform.GetChild(0).GetComponent<TextMesh>().text = " "+ res;
-            firstSubCube.transform.parent.GetComponent<LeapTFB>().releaseCube();
+           transform.GetChild(0).GetComponent<TextMesh>().text = " "+ res;
+           transform.parent.GetComponent<LeapTFB>().releaseCube();
 
 
-            other.transform.parent.GetComponent<CubeProperty>().cubeType = "result";
-            firstSubCube.transform.GetComponent<CubeProperty>().cubeType = "result";
+            transform.GetComponent<CubeProperty>().cubeType = "result";
+            _cube.transform.GetComponent<CubeProperty>().cubeType = "result";
 
             AudioSource[] ye = other.transform.parent.GetComponents<AudioSource>();// the sound of subtraction
             ye[0].playOnAwake = true;
