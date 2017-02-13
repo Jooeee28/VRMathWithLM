@@ -145,8 +145,15 @@ public class touchFB : MonoBehaviour {
                 cube.name = "Cube";
                 cube.SetActive(true);
                 createTag = true;
-                GameObject.Find("add").SetActive(false);
-                GameObject.Find("equation").SetActive(false);
+                if (GameObject.Find("add") != null)
+                {
+
+                    GameObject.Find("add").SetActive(false);
+                }
+                if (GameObject.Find("equation") != null)
+                {
+                    GameObject.Find("equation").SetActive(false);
+                }
             }
            
             return;
