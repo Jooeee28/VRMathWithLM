@@ -84,6 +84,11 @@ namespace Leap.Unity
             //        Debug.LogWarning("Both Pinch Detectors of the LeapRTS component must be assigned. This component has been disabled.");
             //        enabled = false;
             //      }
+           
+            
+
+            
+
             sounds = gameObject.GetComponents<AudioSource>();
             Lefttouchingobject = false;
             Righttouchingobject = false;

@@ -100,6 +100,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Assets\ThirdParty\NewtonsoftJsonNet20\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>Assets\Plugins\System.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="test2.CSharp.csproj">
