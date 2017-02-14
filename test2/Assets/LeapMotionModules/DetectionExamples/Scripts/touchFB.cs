@@ -107,6 +107,9 @@ public class touchFB : MonoBehaviour {
             {
                 Debug.Log("wrong action -> fail");
                 //play fail sound;
+                AudioSource[] wu = transform.GetComponents<AudioSource>();// the sound of failure
+                wu[2].playOnAwake = true;
+                wu[2].Play();
                 return;
             }
             Vector3 tempPos = other.gameObject.transform.position;
@@ -346,6 +349,9 @@ public class touchFB : MonoBehaviour {
             if(transform.GetComponent<CubeProperty>().cubeType != "subtraction")
             {
                 Debug.Log("wrong action!->fail!!!");
+                AudioSource[] wu = transform.GetComponents<AudioSource>();// the sound of failure
+                wu[2].playOnAwake = true;
+                wu[2].Play();
                 return;
             }
             GameObject _cube = null;
@@ -361,6 +367,9 @@ public class touchFB : MonoBehaviour {
             if(_cube.transform.GetComponent<CubeProperty>().cubeType != "subtraction")
             {
                 Debug.Log("wrong action!->fail!!!");
+                AudioSource[] wu = transform.GetComponents<AudioSource>();// the sound of failure
+                wu[2].playOnAwake = true;
+                wu[2].Play();
                 return;
             }
             if (_cube == null)
