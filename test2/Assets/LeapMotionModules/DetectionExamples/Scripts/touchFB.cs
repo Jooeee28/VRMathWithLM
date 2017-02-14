@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Leap.Unity;
-
+using Mono.Data.Sqlite;
+using System.Data;
+using System;
 public class touchFB : MonoBehaviour {
     private AudioSource ascomp;
     public bool lefttouch;
@@ -33,6 +35,8 @@ public class touchFB : MonoBehaviour {
     public string saveText;
 
     private string type;
+
+    private int n1, n2;
 
     // Use this for initialization
     void Start () {
@@ -110,6 +114,20 @@ public class touchFB : MonoBehaviour {
                 AudioSource[] wu = transform.GetComponents<AudioSource>();// the sound of failure
                 wu[2].playOnAwake = true;
                 wu[2].Play();
+
+                num1 = transform.GetChild(0).GetComponent<TextMesh>().text;
+                num2 = other.gameObject.transform.GetChild(0).GetComponent<TextMesh>().text;
+
+                n1 = 0;
+                n2 =0;
+                if (num1 != null && num2 != null)
+                {
+                    n1 = int.Parse(num2);
+                    n2 = int.Parse(num1);
+                }
+
+                InsertValue(n1, n2, -1, "addition");
+
                 return;
             }
             Vector3 tempPos = other.gameObject.transform.position;
@@ -155,6 +173,16 @@ public class touchFB : MonoBehaviour {
                 cube.name = "Cube";
                 cube.SetActive(true);
                 createTag = true;
+                n1 = 0;
+                n2 = 0;
+                if (num1 != null && num2 != null)
+                {
+                    n1 = int.Parse(num2);
+                    n2 = int.Parse(num1);
+                }
+
+                InsertValue(n1, n2, result, "addition");
+
                 if (GameObject.Find("add") != null)
                 {
 
@@ -352,6 +380,21 @@ public class touchFB : MonoBehaviour {
                 AudioSource[] wu = transform.GetComponents<AudioSource>();// the sound of failure
                 wu[2].playOnAwake = true;
                 wu[2].Play();
+
+
+                num1 = transform.GetChild(0).GetComponent<TextMesh>().text;
+                num2 = other.gameObject.transform.parent.transform.GetChild(0).GetComponent<TextMesh>().text;
+
+                n1 = 0;
+                n2 = 0;
+                if (num1 != null && num2 != null)
+                {
+                    n1 = int.Parse(num2);
+                    n2 = int.Parse(num1);
+                }
+
+                InsertValue(n1, n2, -1, "subtraction");
+
                 return;
             }
             GameObject _cube = null;
@@ -370,6 +413,20 @@ public class touchFB : MonoBehaviour {
                 AudioSource[] wu = transform.GetComponents<AudioSource>();// the sound of failure
                 wu[2].playOnAwake = true;
                 wu[2].Play();
+
+                num1 = transform.GetChild(0).GetComponent<TextMesh>().text;
+                num2 = _cube.gameObject.transform.GetChild(0).GetComponent<TextMesh>().text;
+
+                n1 = 0;
+                n2 = 0;
+                if (num1 != null && num2 != null)
+                {
+                    n1 = int.Parse(num2);
+                    n2 = int.Parse(num1);
+                }
+
+                InsertValue(n1, n2, -1, "subtraction");
+
                 return;
             }
             if (_cube == null)
@@ -396,6 +453,19 @@ public class touchFB : MonoBehaviour {
             ye[0].playOnAwake = true;
             ye[0].Play();
 
+            num1 = transform.GetChild(0).GetComponent<TextMesh>().text;
+            num2 = _cube.gameObject.transform.GetChild(0).GetComponent<TextMesh>().text;
+
+            n1 = 0;
+            n2 = 0;
+            if (num1 != null && num2 != null)
+            {
+                n1 = int.Parse(num2);
+                n2 = int.Parse(num1);
+            }
+
+            InsertValue(n1, n2, 0, "subtraction");
+
 
             if (GameObject.Find("minus") != null)
             {
@@ -415,5 +485,20 @@ public class touchFB : MonoBehaviour {
     void jumpForward(Rigidbody _cube) 
     {
         _cube.AddRelativeForce(Vector3.forward*-2f,ForceMode.Impulse);
+    }
+
+
+    void InsertValue(int firstNum,int secondNum,int result,string action)
+    {
+        string conn = "URI=file:" + Application.dataPath + "/progressData.db"; //Path to database.
+        IDbConnection dbconn;
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        dbconn.Open(); //Open connection to the database.
+        IDbCommand dbcmd = dbconn.CreateCommand();
+
+        string sqlQuery = " INSERT INTO MoveData(firstnum, secondnum, action, result)" + " VALUES("+firstNum+", "+secondNum+", " + "'"+action+"'" + ", "+ result + ")";
+        dbcmd.CommandText = sqlQuery;
+        dbcmd.ExecuteNonQuery();
+
     }
 }
