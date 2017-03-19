@@ -150,7 +150,7 @@ namespace Leap.Unity
                 {
                     // transformSingleAnchor(_pinchDetectorA);
                     _anchor.position = _pinchDetectorA.Position;
-                    if (!Lefttouchingobject) {
+                    if (!Lefttouchingobject && !transform.GetChild(0).GetComponent<touchFB>().large) {
                     sounds[0].Play();
 
                     //if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
@@ -188,6 +188,7 @@ namespace Leap.Unity
                     Lefttouchingobject = true;
                     myflag = true;
                     }
+                
 
             }
                 else {
@@ -198,7 +199,7 @@ namespace Leap.Unity
                     {
                         //transformSingleAnchor(_pinchDetectorB);
                         _anchor.position = _pinchDetectorB.Position;
-                        if (!Righttouchingobject)
+                        if (!Righttouchingobject && transform.GetChild(0).GetComponent<touchFB>().large)
                         {
                             sounds[0].Play();
 
@@ -224,7 +225,7 @@ namespace Leap.Unity
                             if (timeGapR <= 1)
                             {
                                 Debug.Log("Right double click success!");
-                                enlargeCube();
+                                releaseCube();
                             }
                         }
                         pinchCountR++;
@@ -378,8 +379,8 @@ namespace Leap.Unity
             //save pinchDetector -> stop being pinched:
             tempPDL = _pinchDetectorA;
             tempPDR = _pinchDetectorB;
-            _pinchDetectorA = null;
-            _pinchDetectorB = null;
+           // _pinchDetectorA = null;
+           // _pinchDetectorB = null;
 
         }
 
