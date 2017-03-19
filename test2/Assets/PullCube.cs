@@ -59,7 +59,7 @@ public class PullCube : MonoBehaviour {
         if (index && thumb)
         {
             Vector3 pos = transform.position;
-            createCube(pos);
+           // createCube(pos);
         }
         //detect right hand and then bring back pinch on cube
         //maybe create a new small adjustable cube

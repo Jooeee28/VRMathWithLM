@@ -150,7 +150,7 @@ namespace Leap.Unity
                 {
                     // transformSingleAnchor(_pinchDetectorA);
                     _anchor.position = _pinchDetectorA.Position;
-                    if (!Lefttouchingobject && !transform.GetChild(0).GetComponent<touchFB>().large) {
+                    if (!Lefttouchingobject && transform.GetChild(0).GetComponent<touchFB>().large) {
                     sounds[0].Play();
 
                     //if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
@@ -175,7 +175,7 @@ namespace Leap.Unity
                             if (timeGapL <= 1)
                             {
                                 Debug.Log("Left double click success!");
-                                enlargeCube();
+                                releaseCube();
                             }
                         }
                         pinchCountL++;
@@ -199,7 +199,7 @@ namespace Leap.Unity
                     {
                         //transformSingleAnchor(_pinchDetectorB);
                         _anchor.position = _pinchDetectorB.Position;
-                        if (!Righttouchingobject && transform.GetChild(0).GetComponent<touchFB>().large)
+                        if (!Righttouchingobject && !transform.GetChild(0).GetComponent<touchFB>().large)
                         {
                             sounds[0].Play();
 
@@ -225,7 +225,7 @@ namespace Leap.Unity
                             if (timeGapR <= 1)
                             {
                                 Debug.Log("Right double click success!");
-                                releaseCube();
+                                enlargeCube();
                             }
                         }
                         pinchCountR++;
@@ -380,7 +380,7 @@ namespace Leap.Unity
             tempPDL = _pinchDetectorA;
             tempPDR = _pinchDetectorB;
            // _pinchDetectorA = null;
-           // _pinchDetectorB = null;
+            _pinchDetectorB = null;
 
         }
 
