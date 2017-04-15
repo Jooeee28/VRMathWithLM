@@ -278,7 +278,7 @@ namespace Leap.Unity
         void OnGUI()
         {
             if (_showGUI)
-            {
+            {/*
                 GUILayout.Label("One Handed Settings");
                 doRotationMethodGUI(ref _oneHandedRotationMethod);
                 GUILayout.Label("Two Handed Settings");
@@ -289,7 +289,7 @@ namespace Leap.Unity
                     touchFB.createTag = false;//set static to default
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     
-                }
+                }*/
             }
         }
 
