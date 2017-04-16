@@ -306,6 +306,12 @@
     <None Include="Assets\LeapMotion\readme.txt" />
     <None Include="Assets\LeapMotionModules\DetectionExamples\Shaders\LeapPinchLine.shader" />
     <None Include="Assets\Plugins\donotdelete.txt" />
+    <None Include="Assets\Resources\q1.txt" />
+    <None Include="Assets\Resources\q2.txt" />
+    <None Include="Assets\Resources\q3.txt" />
+    <None Include="Assets\Resources\q4.txt" />
+    <None Include="Assets\Resources\q5.txt" />
+    <None Include="Assets\Resources\q6.txt" />
     <None Include="Assets\Resources\test.txt" />
     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
     <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\Silhouette.shader" />

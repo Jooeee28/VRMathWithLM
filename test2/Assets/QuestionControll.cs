@@ -7,12 +7,13 @@ public class QuestionControll : MonoBehaviour {
     GameObject firstNum, secondNum, thridNum;
     GameObject firstCube, secondCube, thirdCube;
     string queNum = "";
+    string[] files = { "q1.txt", "q2.txt", "q3.txt", "q4.txt", "q5.txt", "q6.txt" };
 	// Use this for initialization
 	void Start () {
 
-        locateObject();
+        //locateObject();
 
-        loadQuestionByFileName("test.txt");
+        //loadQuestionByFileName("test.txt");
 
 	}
 	
@@ -20,6 +21,15 @@ public class QuestionControll : MonoBehaviour {
 	void Update () {
 	
 	}
+
+
+    public void defineQuestion(int index)//called by button onclick
+    {
+        locateObject();
+
+        loadQuestionByFileName(files[index]);
+
+    }
 
     void locateObject()
     {
