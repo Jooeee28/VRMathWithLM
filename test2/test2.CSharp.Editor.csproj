@@ -130,6 +130,9 @@
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Settings.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_SkyboxEditor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Update.cs" />
+    <Compile Include="Assets\VRCapture\Editor\VRCaptureMenuEditor.cs" />
+    <Compile Include="Assets\VRCapture\Editor\VRCaptureVideoEditor.cs" />
+    <Compile Include="Assets\VRCapture\Editor\VRRadialMenuInspector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeapMotion\Dependencies.txt" />
@@ -161,6 +164,10 @@
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\readme.txt" />
     <None Include="Assets\ThirdParty\NewtonsoftJsonNet20\Newtonsoft.Json.xml" />
+    <None Include="Assets\VRCapture\Shaders\Cubemap2Equirect.shader" />
+    <None Include="Assets\VRCapture\Shaders\LaserPointer.shader" />
+    <None Include="Assets\VRCapture\Shaders\TransparentGlass.shader" />
+    <None Include="Assets\VRCapture\Shaders\UIOverlay.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

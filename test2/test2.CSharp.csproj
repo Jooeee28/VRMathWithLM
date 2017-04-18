@@ -155,6 +155,7 @@
     <Compile Include="Assets\LeapMotionModules\UIInput\Scripts\Utilities\SliderVolume.cs" />
     <Compile Include="Assets\LeapMotionModules\UIInput\Scripts\Utilities\ToggleToggler.cs" />
     <Compile Include="Assets\MenuControl.cs" />
+    <Compile Include="Assets\NumToCubeController.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\AchievementType.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\AndroidPlatform.cs" />
     <Compile Include="Assets\OculusPlatform\Scripts\CAPI.cs" />
@@ -294,6 +295,37 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\MainMenuController.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\ReplayObjectController.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\RotationAround.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\TooltipsManager.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\UIControllerManager.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\VRDemoUIPointer.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\VRRayCameraManager.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\VRReplayDemoUI.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\VRTouchCameraManager.cs" />
+    <Compile Include="Assets\VRCapture\Demo\Scripts\VideoCaptureDemoUI.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRCapture.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRCaptureAudio.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRCaptureScreenshot.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRCaptureVideo.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInput\HTCViveInput.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInput\StandaloneInput.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInput\VRDevice.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\UI\VRRadialMenu.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\UI\VRTooltip.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\UI\VRTooltipController.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\Module\VRInputModule.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\Module\VRUIGraphicRaycaster.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\Module\VRUIPointer.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\VRChangCameraPoint.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\VRDrawUICircle.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\VREventController.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\VRTeleport.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRInteration\Utils\VRUIController.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRReplay.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRReplayAuto.cs" />
+    <Compile Include="Assets\VRCapture\Scripts\VRUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\LeapMotion\Dependencies.txt" />
@@ -325,6 +357,10 @@
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\readme.txt" />
     <None Include="Assets\ThirdParty\NewtonsoftJsonNet20\Newtonsoft.Json.xml" />
+    <None Include="Assets\VRCapture\Shaders\Cubemap2Equirect.shader" />
+    <None Include="Assets\VRCapture\Shaders\LaserPointer.shader" />
+    <None Include="Assets\VRCapture\Shaders\TransparentGlass.shader" />
+    <None Include="Assets\VRCapture\Shaders\UIOverlay.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

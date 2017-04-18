@@ -44,7 +44,7 @@ public class QuestionControll : MonoBehaviour {
             queLine2 = n.transform.GetChild(4).gameObject;
 
         }
-
+        // locate the cubes
         firstCube = GameObject.FindGameObjectWithTag("cube1");
         secondCube = GameObject.FindGameObjectWithTag("cube2");
 
@@ -67,6 +67,16 @@ public class QuestionControll : MonoBehaviour {
         line = reader.ReadLine();
         Debug.Log(line);
         queLine2.GetComponent<TextMesh>().text = line;
+        line = reader.ReadLine();
+        Debug.Log(line);
+        firstNum.GetComponent<TextMesh>().text = line;
+        firstCube.transform.GetComponent<touchFB>().saveText = "  " + line;
+       // firstCube.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "  " + line;
+        line = reader.ReadLine();
+        Debug.Log(line);
+        secondNum.GetComponent<TextMesh>().text = line;
+        secondCube.transform.GetComponent<touchFB>().saveText = "  " + line;
+        //  secondCube.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "  " + line;
         reader.Close();
 
     }

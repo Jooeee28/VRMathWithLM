@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class MenuControl : MonoBehaviour {
     
@@ -39,5 +38,26 @@ public class MenuControl : MonoBehaviour {
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StopRecord()
+    {
+        VRCapture.VRCapture.Instance.StopCapture();
+
+        /*
+        if (VRCapture.VRReplay.Instance.LoadReplay())
+        {
+            VRCapture.VRReplay.Instance.StartReplay();
+        }
+        */
+
+        GameObject.Find("Menus").transform.GetChild(2).gameObject.SetActive(false);
+    }
+
+    public void StartRecord()
+    {
+       // VRCapture.VRReplay.Instance.StartRecord();
+        VRCapture.VRCapture.Instance.StartCapture();
+        GameObject.Find("Menus").transform.GetChild(2).gameObject.SetActive(true);
     }
 }
