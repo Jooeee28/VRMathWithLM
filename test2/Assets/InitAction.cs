@@ -11,6 +11,7 @@ public class InitAction : MonoBehaviour {
 
         string conn = "URI=file:" + Application.dataPath + "/progressData.db"; //Path to database.
         IDbConnection dbconn;
+        Debug.Log(conn);
         dbconn = (IDbConnection)new SqliteConnection(conn);
         dbconn.Open(); //Open connection to the database.
         IDbCommand dbcmd = dbconn.CreateCommand();

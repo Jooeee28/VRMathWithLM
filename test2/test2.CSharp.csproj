@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CubeProperty.cs" />
+    <Compile Include="Assets\DataBaseController.cs" />
     <Compile Include="Assets\DestroyCube.cs" />
     <Compile Include="Assets\InitAction.cs" />
     <Compile Include="Assets\LeapMotion\Scripts\DetectionUtilities\Detector.cs" />
@@ -338,6 +339,7 @@
     <None Include="Assets\LeapMotion\readme.txt" />
     <None Include="Assets\LeapMotionModules\DetectionExamples\Shaders\LeapPinchLine.shader" />
     <None Include="Assets\Plugins\donotdelete.txt" />
+    <None Include="Assets\Resources\movements.txt" />
     <None Include="Assets\Resources\q1.txt" />
     <None Include="Assets\Resources\q2.txt" />
     <None Include="Assets\Resources\q3.txt" />
