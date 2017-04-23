@@ -107,6 +107,7 @@ public class touchFB : MonoBehaviour {
             && !transform.GetComponent<touchFB>().large)//&& other.gameObject.transform.GetComponent<CubeProperty>().cubeType == "addition"
             //&& transform.GetComponent<CubeProperty>().cubeType == "addition")
         {
+            /*
             if(other.transform.GetComponent<CubeProperty>().cubeType != "addition" || transform.GetComponent<CubeProperty>().cubeType != "addition")
             {
                 Debug.Log("wrong action -> fail");
@@ -129,7 +130,7 @@ public class touchFB : MonoBehaviour {
                 InsertValue(n1, n2, -1, "addition");
 
                 return;
-            }
+            }*/
             Vector3 tempPos = other.gameObject.transform.position;
             Vector3 tempScale = other.gameObject.transform.localScale;
             Quaternion tempRot = other.gameObject.transform.rotation;
@@ -374,6 +375,7 @@ public class touchFB : MonoBehaviour {
         {
             //do final subtraction activate first cube.
             // GameObject firstSubCube = GameObject.FindGameObjectWithTag("cubesub1");
+            /*
             if(transform.GetComponent<CubeProperty>().cubeType != "subtraction")
             {
                 Debug.Log("wrong action!->fail!!!");
@@ -396,7 +398,7 @@ public class touchFB : MonoBehaviour {
                 InsertValue(n1, n2, -1, "subtraction");
 
                 return;
-            }
+            }*/
             GameObject _cube = null;
             if (transform.tag == "cube1")
             {

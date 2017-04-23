@@ -42,7 +42,7 @@ public class MenuControl : MonoBehaviour {
 
     public void StopRecord()
     {
-        VRCapture.VRCapture.Instance.StopCapture();
+       //VRCapture.VRCapture.Instance.StopCapture();
 
         /*
         if (VRCapture.VRReplay.Instance.LoadReplay())
@@ -57,7 +57,7 @@ public class MenuControl : MonoBehaviour {
     public void StartRecord()
     {
        // VRCapture.VRReplay.Instance.StartRecord();
-        VRCapture.VRCapture.Instance.StartCapture();
+       // VRCapture.VRCapture.Instance.StartCapture();
         GameObject.Find("Menus").transform.GetChild(2).gameObject.SetActive(true);
     }
 }

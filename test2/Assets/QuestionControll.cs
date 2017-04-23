@@ -11,9 +11,9 @@ public class QuestionControll : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        //locateObject();
+        locateObject();
 
-        //loadQuestionByFileName("test.txt");
+        loadQuestionByFileName(files[0]);
 
 	}
 	

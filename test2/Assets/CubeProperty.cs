@@ -10,6 +10,5 @@ public class CubeProperty : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        VRCapture.VRReplay.Instance.AddTransform(this.transform);
 	}
 }
