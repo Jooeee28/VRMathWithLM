@@ -134,14 +134,13 @@ public class touchFB : MonoBehaviour {
             Vector3 tempPos = other.gameObject.transform.position;
             Vector3 tempScale = other.gameObject.transform.localScale;
             Quaternion tempRot = other.gameObject.transform.rotation;
-            other.gameObject.SetActive(false); 
-            if (!createTag)//check if there is already one
+            other.gameObject.SetActive(false);
+            if (gameObject.activeInHierarchy)
             {
-                // add the amount together
                 GameObject thisCube = gameObject;
                 num1 = thisCube.transform.GetChild(0).GetComponent<TextMesh>().text;
                 num2 = other.gameObject.transform.GetChild(0).GetComponent<TextMesh>().text;
-                int result=0;
+                int result = 0;
                 if (num1 != null && num2 != null)
                 {
                     result = int.Parse(num2) + int.Parse(num1);
@@ -176,7 +175,6 @@ public class touchFB : MonoBehaviour {
                 //sounds[0].Play();
                 cube.name = "Cube";
                 cube.SetActive(true);
-                createTag = true;
                 n1 = 0;
                 n2 = 0;
                 if (num1 != null && num2 != null)
@@ -186,16 +184,6 @@ public class touchFB : MonoBehaviour {
                 }
 
                 InsertValue(n1, n2, result, "addition");
-
-                if (GameObject.Find("add") != null)
-                {
-
-                    GameObject.Find("add").SetActive(false);
-                }
-                if (GameObject.Find("equation") != null)
-                {
-                    GameObject.Find("equation").SetActive(false);
-                }
             }
            
             return;
@@ -403,14 +391,7 @@ public class touchFB : MonoBehaviour {
                 return;
             }*/
             GameObject _cube = null;
-            if (transform.tag == "cube1")
-            {
-                _cube = GameObject.FindGameObjectWithTag("cube2");
-            }
-            else if (transform.tag == "cube2")
-            {
-                _cube = GameObject.FindGameObjectWithTag("cube1");
-            }
+            _cube = other.transform.parent.gameObject;
             /*
             if(_cube.transform.GetComponent<CubeProperty>().cubeType != "subtraction")
             {
@@ -437,7 +418,7 @@ public class touchFB : MonoBehaviour {
             */
             if (_cube == null)
             {
-                Debug.Log("cannot find cubesub1");
+                Debug.Log("cannot find cubesub other");
                 return;
             }
             string  firstStr  = transform.GetChild(0).GetComponent<TextMesh>().text;
@@ -471,18 +452,6 @@ public class touchFB : MonoBehaviour {
             }
 
             InsertValue(n1, n2, 0, "subtraction");
-
-
-            if (GameObject.Find("minus") != null)
-            {
-                GameObject.Find("minus").SetActive(false);
-            }
-
-            if (GameObject.Find("equationSub") != null)
-            {
-                GameObject.Find("equationSub").SetActive(false);
-            }
-
 
 
         }
