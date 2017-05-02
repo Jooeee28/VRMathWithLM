@@ -97,7 +97,67 @@ public class touchFB : MonoBehaviour {
 
     }
    
-     void OnTriggerEnter(Collider other)
+    string getBiggerCube(string cube_a,string cube_b)
+    {
+        string winner=cube_a;
+        string end_a = cube_a.Substring(4, 1);
+        string end_b = cube_b.Substring(4, 1);
+        if (int.Parse(end_a) > int.Parse(end_b))
+        {
+            winner = cube_a;
+
+        }
+        else
+        {
+            winner = cube_b;
+        }
+        return winner;
+    }
+
+    void addition(GameObject thisCube,GameObject otherCube)
+    {
+        string tagA = thisCube.transform.tag;
+        string tagB = otherCube.transform.tag;
+        string winner = getBiggerCube(tagA, tagB);
+        if (tagA != winner)//loser got absent
+        {
+            return;
+        }
+
+        Vector3 tempPos = otherCube.transform.position;
+        Vector3 tempScale = otherCube.transform.localScale;
+        Quaternion tempRot = otherCube.transform.rotation;
+        otherCube.transform.position = new Vector3(otherCube.transform.position.x, otherCube.transform.position.y,3f);
+        
+        num1 = thisCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+        num2 = otherCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+        int result = 0;
+        if (num1 != null && num2 != null){
+           result = int.Parse(num2) + int.Parse(num1);
+        }
+        Debug.Log("create cube");
+        thisCube.transform.GetChild(0).GetComponent<TextMesh>().text = " " + result;
+        // thisCube.transform.GetChild(1).gameObject.SetActive(false);
+        thisCube.GetComponent<Renderer>().material.color = Color.yellow;
+        AudioSource[] ye = thisCube.GetComponents<AudioSource>();// the sound of addition
+        ye[0].playOnAwake = true;
+        ye[0].Play();
+        //sounds[0].Play();
+        /*
+        n1 = 0;
+        n2 = 0;
+        if (num1 != null && num2 != null)
+        {
+            n1 = int.Parse(num2);
+            n2 = int.Parse(num1);
+        }
+        */
+
+        otherCube.transform.GetChild(0).GetComponent<TextMesh>().text = "";
+
+    }
+
+    void OnTriggerEnter(Collider other)
      {
         // gameObject.SetActive(false)
         //
@@ -131,6 +191,9 @@ public class touchFB : MonoBehaviour {
 
                 return;
             }*/
+            GameObject otherG = other.gameObject;
+            addition(gameObject, otherG);
+            /*
             Vector3 tempPos = other.gameObject.transform.position;
             Vector3 tempScale = other.gameObject.transform.localScale;
             Quaternion tempRot = other.gameObject.transform.rotation;
@@ -185,7 +248,7 @@ public class touchFB : MonoBehaviour {
 
                 InsertValue(n1, n2, result, "addition");
             }
-           
+           */
             return;
         }
         if (other == null 
