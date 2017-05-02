@@ -149,6 +149,7 @@ public class touchFB : MonoBehaviour {
                 Debug.Log("create cube");
                 // cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 cube = Instantiate(other.gameObject);
+                cube.transform.parent = other.gameObject.transform.parent;
                 cube.transform.position = tempPos;
                 cube.transform.localScale = tempScale;
                 cube.transform.rotation = tempRot;
@@ -167,6 +168,8 @@ public class touchFB : MonoBehaviour {
                 cube.GetComponent<BoxCollider>().isTrigger = true;
                 cube.GetComponent<Rigidbody>().isKinematic = true;
                 cube.GetComponent<Renderer>().material.color = Color.yellow;
+
+                cube.transform.localScale = new Vector3(1, 1, 1);
                 AudioSource[] ye = cube.GetComponents<AudioSource>();// the sound of addition
                 ye[0].playOnAwake = true;
                 ye[0].Play();
@@ -408,7 +411,7 @@ public class touchFB : MonoBehaviour {
             {
                 _cube = GameObject.FindGameObjectWithTag("cube1");
             }
-
+            /*
             if(_cube.transform.GetComponent<CubeProperty>().cubeType != "subtraction")
             {
                 Debug.Log("wrong action!->fail!!!");
@@ -431,6 +434,7 @@ public class touchFB : MonoBehaviour {
 
                 return;
             }
+            */
             if (_cube == null)
             {
                 Debug.Log("cannot find cubesub1");

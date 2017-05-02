@@ -1,5 +1,6 @@
-How  much  would  it 
-cost for a            P   book
-and a          P  bike?
-5
-2
+There are        children in Year 4
+and 	     in Year 5.How many 
+children are there in 
+year 4 and year 5?
+10
+15

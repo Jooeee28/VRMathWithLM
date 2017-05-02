@@ -37,6 +37,8 @@ public class MenuControl : MonoBehaviour {
 
     public void ResetScene()
     {
+        //reset static value
+        touchFB.createTag = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
