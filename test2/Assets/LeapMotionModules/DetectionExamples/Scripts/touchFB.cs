@@ -221,7 +221,7 @@ public class touchFB : MonoBehaviour {
   
             }
             nolefttouches++;
-
+            /*
             if(insideWall 
                 && other.transform.parent.transform.name == "index"
                 && transform.tag !="cubesub2")
@@ -267,7 +267,7 @@ public class touchFB : MonoBehaviour {
                 }
 
             }
-
+            */
 
         }
         if (touchedhand == "righthand")
@@ -280,7 +280,7 @@ public class touchFB : MonoBehaviour {
 
             }
             norighttouches++;
-
+            /*
             if (insideWall 
                 && other.transform.parent.transform.name == "index"
                 && transform.tag != "cubesub2")
@@ -325,7 +325,7 @@ public class touchFB : MonoBehaviour {
                 }
 
 
-            }
+            }*/
 
         }
         

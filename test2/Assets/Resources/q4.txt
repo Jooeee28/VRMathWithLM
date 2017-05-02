@@ -1,3 +1,8 @@
-How  much  would  it 
-cost for a            P   book
-and a          P  bike?
+There were 		 people on Train A,
+		people on Train B and 	
+people on Train C. How many
+people were there 
+altogether ?
+4
+2
+6

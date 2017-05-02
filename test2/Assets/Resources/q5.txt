@@ -1,3 +1,7 @@
-How  much  would  it 
-cost for a            P   book
-and a          P  bike?
+A bus is running with		 people
+on it,at stop A,			people get on,
+while at stop B 		 people get off,
+how many left on the bus?
+6
+5
+4

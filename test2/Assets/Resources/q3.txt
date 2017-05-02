@@ -1,3 +1,9 @@
-How  much  would  it 
-cost for a            P   book
-and a          P  bike?
+There were 		 children in the 
+music lesson, but 		went to 
+the toilet and 		were sent home
+because they were ill. How many
+children were left in the
+lesson?
+15
+9
+10
