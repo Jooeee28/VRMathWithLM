@@ -46,7 +46,21 @@ public class DataBaseController : MonoBehaviour {
         dbcmd.CommandText = sqlQuery;
         dbcmd.ExecuteNonQuery();
     }
+    public static void InsertAction(string cube,string hand,string action,float x,float y,float z)
+    {
+        string ts = GetTimestamp(System.DateTime.Now);
 
+        string conn = "URI=file:" + Application.dataPath + "/progressData.db"; //Path to database.
+        IDbConnection dbconn;
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        dbconn.Open(); //Open connection to the database.
+        IDbCommand dbcmd = dbconn.CreateCommand();
+        // attention ! sqlite string should be very carefully written
+        string sqlQuery = " INSERT INTO action_cube_hand(cube, hand, action, timestamp, x, y, z)" + " VALUES(" + "'" + cube + "'" + ", " + "'" + hand + "'" + ", " + "'" + action + "'" + ", " + ts + ", " + x + ", " + y + ", " + z + ")";
+        dbcmd.CommandText = sqlQuery;
+        dbcmd.ExecuteNonQuery();
+
+    }
     public static string GetTimestamp(System.DateTime value)
     {
         return value.ToString("yyyyMMddHHmmssffff");
@@ -69,6 +83,15 @@ public class DataBaseController : MonoBehaviour {
     void OnApplicationQuit()
     {
         Debug.Log("Application ending after " + Time.time + " seconds");
+
+        writeToFile_Move();
+
+        writeToFile_Action();
+
+    }
+
+    void writeToFile_Move()
+    {
         string path = "Assets/Resources/movements.txt";
         string conn = "URI=file:" + Application.dataPath + "/progressData.db"; //Path to database.
         IDbConnection dbconn;
@@ -87,7 +110,40 @@ public class DataBaseController : MonoBehaviour {
             string line = reader.GetString(0) + "," + reader.GetInt32(1) + "," + reader.GetFloat(2) + ","
                 + reader.GetFloat(3) + "," + reader.GetFloat(4);
             writer.WriteLine(line);
-           
+
+        }
+        writer.Close();
+        reader.Close();
+        reader = null;
+        dbcmd.Dispose();
+        dbcmd = null;
+        dbconn.Close();
+        dbconn = null;
+    }
+
+
+    void writeToFile_Action()
+    {
+        string path = "Assets/Resources/actions.txt";
+        string conn = "URI=file:" + Application.dataPath + "/progressData.db"; //Path to database.
+        IDbConnection dbconn;
+        Debug.Log(conn);
+        dbconn = (IDbConnection)new SqliteConnection(conn);
+        dbconn.Open(); //Open connection to the database.
+        IDbCommand dbcmd = dbconn.CreateCommand();
+
+        string sqlQuery = "SELECT *" + "FROM action_cube_hand";
+        dbcmd.CommandText = sqlQuery;
+        IDataReader reader = dbcmd.ExecuteReader();
+
+        StreamWriter writer = new StreamWriter(path, true);
+        while (reader.Read())
+        {
+            string line = reader.GetString(0) + ","+ reader.GetString(1) + ","+ reader.GetString(2) + "," + reader.GetInt32(3) + "," 
+                + reader.GetFloat(4) + ","
+                + reader.GetFloat(5) + "," + reader.GetFloat(6);
+            writer.WriteLine(line);
+
         }
         writer.Close();
         reader.Close();

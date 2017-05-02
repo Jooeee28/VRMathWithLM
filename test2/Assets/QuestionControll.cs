@@ -11,6 +11,12 @@ public class QuestionControll : MonoBehaviour {
     GameObject firNumCan, secNumCan, thiNumCan;
     public string attach;
 
+    static string[] saveLines = { "", "", "", "", "", "" };
+    static bool[] canShow= { false,false,false};
+    static Vector3[] cubePos = { new Vector3(), new Vector3() , new Vector3() };
+    static string[] cubeTexts = { "", "", "" };
+
+
     string queNum = "";
     string[] files = { "q1.txt", "q2.txt", "q3.txt", "q4.txt", "q5.txt", "q6.txt" };
 
@@ -211,7 +217,7 @@ public class QuestionControll : MonoBehaviour {
                 secNumCan.transform.position = q1_setting[1];
                 firstCube.transform.parent.transform.position = q1_setting[2];
                 secondCube.transform.parent.transform.position = q1_setting[3];
-                ; break;
+                break;
             case 1:
                 thiNumCan.SetActive(false);
                 queLine4.SetActive(true);
@@ -497,4 +503,83 @@ public class QuestionControll : MonoBehaviour {
         }
     }
     
+    public void saveScene()//clear all setting save current state;
+    {
+        locateAll();
+
+        saveLines[0] = queLine0.GetComponent<TextMesh>().text;
+        queLine0.GetComponent<TextMesh>().text = "";
+        saveLines[1] = queLine1.GetComponent<TextMesh>().text;
+        queLine1.GetComponent<TextMesh>().text = "";
+        saveLines[2] = queLine2.GetComponent<TextMesh>().text;
+        queLine2.GetComponent<TextMesh>().text = "";
+        saveLines[3] = queLine3 != null ? queLine3.GetComponent<TextMesh>().text : "";
+        if (queLine3) queLine3.GetComponent<TextMesh>().text = "";
+        saveLines[4] = queLine4 != null ? queLine4.GetComponent<TextMesh>().text : "";
+        if (queLine4) queLine4.GetComponent<TextMesh>().text = "";
+        saveLines[5] = queLine5 != null ? queLine5.GetComponent<TextMesh>().text : "";
+        if (queLine5) queLine5.GetComponent<TextMesh>().text = "";
+
+        canShow[0] = firNumCan.activeInHierarchy;
+        firNumCan.SetActive(false);
+        canShow[1] = secNumCan.activeInHierarchy;
+        secNumCan.SetActive(false);
+        canShow[2] = thiNumCan.activeInHierarchy;
+        thiNumCan.SetActive(false);
+
+        cubeTexts[0] = firstCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+        firstCube.transform.GetChild(0).GetComponent<TextMesh>().text = "";
+        cubeTexts[1] = secondCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+        secondCube.transform.GetChild(0).GetComponent<TextMesh>().text = "";
+        cubeTexts[2] = thirdCube.transform.GetChild(0).GetComponent<TextMesh>().text;
+        thirdCube.transform.GetChild(0).GetComponent<TextMesh>().text = "";
+        /*
+        cubePos[0] = firstCube.transform.position;
+        firstCube.transform.position = new Vector3(firstCube.transform.position.x, firstCube.transform.position.y, 3f);
+        cubePos[1] = secondCube.transform.position;
+        secondCube.transform.position = new Vector3(secondCube.transform.position.x, secondCube.transform.position.y,3f);
+        cubePos[2] = thirdCube.transform.position;
+        thirdCube.transform.position = new Vector3(thirdCube.transform.position.x, thirdCube.transform.position.y, 3f);
+        */
+
+
+    }
+
+    public void recoverScene()
+    {
+        locateAll();
+        queLine0.GetComponent<TextMesh>().text = saveLines[0];
+        queLine1.GetComponent<TextMesh>().text = saveLines[1];
+        queLine2.GetComponent<TextMesh>().text = saveLines[2];
+        if (queLine3) queLine3.GetComponent<TextMesh>().text = saveLines[3];
+        if (queLine4) queLine4.GetComponent<TextMesh>().text = saveLines[4];
+        if (queLine5) queLine5.GetComponent<TextMesh>().text = saveLines[5];
+        
+        firNumCan.SetActive(canShow[0]);
+        secNumCan.SetActive(canShow[1]);
+        thiNumCan.SetActive(canShow[2]);
+        
+        firstCube.transform.GetChild(0).GetComponent<TextMesh>().text = cubeTexts[0];
+        secondCube.transform.GetChild(0).GetComponent<TextMesh>().text = cubeTexts[1];
+        thirdCube.transform.GetChild(0).GetComponent<TextMesh>().text = cubeTexts[2];
+        /*
+        firstCube.transform.position = cubePos[0];
+        secondCube.transform.position = cubePos[1];
+        thirdCube.transform.position = cubePos[2];
+        */
+
+        //delete all saved data
+        for(int i = 0; i < 6; i++)
+        {
+            saveLines[i] = "";
+        }
+        for(int i = 0; i < 3; i++)
+        {
+            canShow[i] = false;
+            cubeTexts[i] = "";
+            cubePos[i] = new Vector3();
+        }
+
+
+    }
 }

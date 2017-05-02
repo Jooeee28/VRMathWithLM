@@ -152,6 +152,7 @@ namespace Leap.Unity
                     _anchor.position = _pinchDetectorA.Position;
                     if (!Lefttouchingobject && transform.GetChild(0).GetComponent<touchFB>().large) {
                     sounds[0].Play();
+                    DataBaseController.InsertAction(transform.GetChild(0).tag, "lefthand", "pinch", transform.position.x, transform.position.y, transform.position.z);
 
                     //if(transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
                         //&& transform.GetChild(0).tag=="cubesub1")
@@ -175,7 +176,10 @@ namespace Leap.Unity
                             if (timeGapL <= 1)
                             {
                                 Debug.Log("Left double click success!");
-                                releaseCube();
+                            DataBaseController.InsertAction(transform.GetChild(0).tag, "lefthand", "release", transform.position.x, transform.position.y, transform.position.z);
+
+                            releaseCube();
+
                             }
                         }
                         pinchCountL++;
@@ -202,12 +206,14 @@ namespace Leap.Unity
                         if (!Righttouchingobject && !transform.GetChild(0).GetComponent<touchFB>().large)
                         {
                             sounds[0].Play();
+                    DataBaseController.InsertAction(transform.GetChild(0).tag, "righthand", "pinch", transform.position.x, transform.position.y, transform.position.z);
 
-                   // if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
-                     //   && transform.GetChild(0).tag == "cubesub1")
+
+                    // if (transform.GetChild(0).GetComponent<CubeProperty>().cubeType == "subtraction"
+                    //   && transform.GetChild(0).tag == "cubesub1")
                     //{
-                        //double click detect Right
-                        if (pinchCountR == 1)// avoid redundant
+                    //double click detect Right
+                    if (pinchCountR == 1)// avoid redundant
                         {
                             if (Time.time - timeGapR > 1)// not validate click
                             {
@@ -225,7 +231,9 @@ namespace Leap.Unity
                             if (timeGapR <= 1)
                             {
                                 Debug.Log("Right double click success!");
-                                enlargeCube();
+                            DataBaseController.InsertAction(transform.GetChild(0).tag, "righthand", "enlarge", transform.position.x, transform.position.y, transform.position.z);
+
+                            enlargeCube();
                             }
                         }
                         pinchCountR++;
